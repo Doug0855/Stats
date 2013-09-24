@@ -11,16 +11,6 @@ import java.util.Arrays;
 
 public class Stats {
 	public static void main(String[] args) {
-		int[] test = {1, 3, 1, 4, 1, -2, -3};
-
-		System.out.println("Max: " + max(test));
-		System.out.println("Min: " + min(test));
-		System.out.println("Mean: " + mean(test));
-		System.out.println("Median: " + median(test));
-		System.out.println("First Quatile: " + quartile1(test));
-		System.out.println("Third Quartile : " + quartile3(test));
-		System.out.println("Mode: " + mode(test));
-		System.out.println("Standard Deviation: " + standardDeviation(test));
 	}
 
 	public static int max(int[] a) {
