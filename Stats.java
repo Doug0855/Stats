@@ -11,9 +11,7 @@ import java.util.Arrays;
 
 public class Stats {
 	public static void main(String[] args) {
-		int[] test = {1, 5, 9, 4, -1};
-
-		median(test);
+		double[] test = {1, 4, 4, 2, 1, 7};
 	}
 
 	public static int max(int[] a) {
@@ -23,9 +21,6 @@ public class Stats {
 				max = a[i];
 			}
 		}
-
-		System.out.println("The max is " + max);
-
 		return max;
 	}
 
@@ -36,36 +31,31 @@ public class Stats {
 				min = a[i];
 			}
 		}
-
-		System.out.println("The min is " + min);
-
 		return min;
 	}
 
-	public static int mean(int[] a) {
-		int mean=0;
-		int sum =0;
+	public static double mean(double[] a) {
+		double mean=0;
+		double sum =0;
 		for (int i=0; i<a.length; i++) {
 			sum+=a[i];
 		}
 
 		mean = sum/a.length;
-		System.out.println("The mean is " + mean);
 		return mean;
 	}
 
-	public static double median(int[] a) {
+	public static double median(double[] a) {
 		double median=0;
 		Arrays.sort(a);
 
 		if (a.length%2==0) {
-			median = (a[a.length/2] + a[a.length/2 - 1])/2 +.5;
+			median = (a[a.length/2] + a[a.length/2 - 1]);
+			median = median/2;
 		} else {
 
 			median = a[a.length/2];
 		}
-
-		System.out.println("The median is " + median);
 		return median;
 	}
 
@@ -73,37 +63,61 @@ public class Stats {
 		double quart=0;
 		Arrays.sort(a);
 
-		if (a.length%2==0) {
-			quart = (a[a.length/4] + a[a.length/4 - 1])/2 + .5;
+		if (a.length%3==0) {
+			quart=a[a.length/3-1];
 		} else {
-			quart = a[a.length/4];
+			quart = (a[a.length/4] + a[a.length/4 + 1]);
+			quart = quart/2;
 		}
-
 		return quart;
 	}
+
+	public static double quartile3(int[] a) {
+		double quart=0;
+		Arrays.sort(a);
+
+		if (a.length%3==0) {
+			quart=a[a.length*2/3];
+		} else {
+			quart = (a[a.length*2/3] + a[a.length*2/3 + 1]);
+			quart = quart/2;
+		}
+		return quart;
+	}
+
+	
+	
+	public static int mode(int a[]) {
+	    int maxValue=0, maxCount=0;
+
+	    for (int i = 0; i < a.length; i++) {
+	        int count = 0;
+	        for (int j = 0; j < a.length; i++) {
+	            if (a[j] == a[i]) {
+	            	count++;
+	            }
+	        }
+	        if (count > maxCount) {
+	            maxCount = count;
+	            maxValue = a[i];
+	        }
+	    }
+	    
+	    return maxValue;
+	}
+
+	public static double standev(double[] a) {
+		double med = mean(a);
+		double[] difsq = new double[a.length];
+		double standev = 0;
+
+		for (int i=0; i<a.length; i++) {
+			difsq[i] = (a[i] - med) * (a[i] - med);
+		}
+
+		standev = Math.sqrt(mean(difsq));
+		return standev;                                           
+	}
+	
+	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
