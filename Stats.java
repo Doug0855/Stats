@@ -11,6 +11,9 @@ import java.util.Arrays;
 
 public class Stats {
 	public static void main(String[] args) {
+		int[] test = {4, 3, 6, 4, 7, 9, 2};
+
+		
 	}
 
 	public static int max(int[] a) {
@@ -51,7 +54,7 @@ public class Stats {
 			sum+=a[i];
 		}
 
-		mean = sum/a.length;
+		mean = sum/(a.length-1);
 		return mean;
 	}
 
@@ -76,8 +79,11 @@ public class Stats {
 
 		if (a.length%3==0) {
 			quart=a[a.length/3-1];
+		} else if(a.length%2==0) {
+			quart = (a[a.length/4] + a[a.length/4 - 1]);
+			quart = quart/2;
 		} else {
-			quart = (a[a.length/4] + a[a.length/4 + 1]);
+			quart = (a[(a.length-1)/2-1] + a[(a.length-1)/2-2]);
 			quart = quart/2;
 		}
 		return quart;
@@ -115,6 +121,17 @@ public class Stats {
 	    }
 	    
 	    return maxValue;
+	}
+
+	public static double standevmean(int[] a) {
+		double mean=0;
+		double sum =0;
+		for (int i=0; i<a.length; i++) {
+			sum+=a[i];
+		}
+
+		mean = sum/(a.length-1);
+		return mean;
 	}
 
 	public static double standardDeviation(int[] a) {
